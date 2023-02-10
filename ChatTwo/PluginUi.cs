@@ -308,8 +308,8 @@ internal sealed class PluginUi : IDisposable {
         this.SetUpRanges();
         this.SetUpUserFonts();
 
-        this.Axis = this.Plugin.Interface.UiBuilder.GetGameFontHandle(new GameFontStyle(GameFontFamily.Axis, this.Plugin.Config.FontSize));
-        this.AxisItalic = this.Plugin.Interface.UiBuilder.GetGameFontHandle(new GameFontStyle(GameFontFamily.Axis, this.Plugin.Config.FontSize) {
+        this.Axis = this.Plugin.Interface.UiBuilder.GetGameFontHandle(new GameFontStyle(GameFontFamilyAndSize.Axis12));
+        this.AxisItalic = this.Plugin.Interface.UiBuilder.GetGameFontHandle(new GameFontStyle(GameFontFamilyAndSize.Axis12) {
             SkewStrength = this.Plugin.Config.FontSize / 6,
         });
 

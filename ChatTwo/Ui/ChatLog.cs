@@ -1339,7 +1339,7 @@ internal sealed class ChatLog : IUiComponent {
             ImGui.PopStyleVar();
         }
     }
-
+  
     private void DrawChunk(Chunk chunk, bool wrap = true, PayloadHandler? handler = null, float lineWidth = 0f) {
         if (chunk is IconChunk icon && this._fontIcon != null) {
             var bounds = IconUtil.GetBounds((byte) icon.Icon);

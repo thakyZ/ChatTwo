@@ -14,6 +14,7 @@ using ImGuiNET;
 using ImGuiScene;
 using Lumina.Excel.GeneratedSheets;
 using Action = System.Action;
+using Dalamud.ContextMenu;
 
 namespace ChatTwo;
 
@@ -400,6 +401,8 @@ internal sealed class PayloadHandler {
         if (ImGui.Selectable(Language.Context_CopyItemName)) {
             ImGui.SetClipboardText(name.TextValue);
         }
+
+        DalamudContextMenu contextMenu = new DalamudContextMenu();
     }
 
     private void DrawEventItemPopup(ItemPayload payload) {
