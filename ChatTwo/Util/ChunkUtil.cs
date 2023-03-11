@@ -63,6 +63,9 @@ internal static class ChunkUtil {
                 case PayloadType.Player:
                     link = payload;
                     break;
+                case PayloadType.PartyFinder:
+                    link = payload;
+                    break;
                 case PayloadType.Unknown:
                     var rawPayload = (RawPayload) payload;
                     if (rawPayload.Data.Length > 1 && rawPayload.Data[1] == 0x13) {
@@ -80,8 +83,6 @@ internal static class ChunkUtil {
                         link = new AchievementPayload(id);
                     } else if (Equals(rawPayload, RawPayload.LinkTerminator)) {
                         link = null;
-                    } else if (Equals(rawPayload, PeriodicRecruitmentLink)) {
-                        link = rawPayload;
                     }
 
                     break;

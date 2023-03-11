@@ -4,6 +4,7 @@ using ChatTwo.Code;
 using ChatTwo.Resources;
 using ChatTwo.Ui;
 using ChatTwo.Util;
+using Dalamud.ContextMenu;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Game.Text.SeStringHandling.Payloads;
@@ -14,7 +15,8 @@ using ImGuiNET;
 using ImGuiScene;
 using Lumina.Excel.GeneratedSheets;
 using Action = System.Action;
-using Dalamud.ContextMenu;
+using DalamudPartyFinderPayload = Dalamud.Game.Text.SeStringHandling.Payloads.PartyFinderPayload;
+using ChatTwoPartyFinderPayload = ChatTwo.Util.PartyFinderPayload;
 
 namespace ChatTwo;
 
@@ -295,7 +297,16 @@ internal sealed class PayloadHandler {
                 this.ClickLinkPayload(chunk, payload, link);
                 break;
             }
-            case PartyFinderPayload pf: {
+            case DalamudPartyFinderPayload pf: {
+                if (pf.LinkType == DalamudPartyFinderPayload.PartyFinderLinkType.PartyFinderNotification) {
+                    GameFunctions.GameFunctions.OpenPartyFinder();
+                } else {
+                    this.Ui.Plugin.Functions.OpenPartyFinder(pf.ListingId);
+                }
+
+                break;
+            }
+            case ChatTwoPartyFinderPayload pf: {
                 this.Ui.Plugin.Functions.OpenPartyFinder(pf.Id);
                 break;
             }
